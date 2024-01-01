@@ -1,0 +1,510 @@
+@import "./index.scss";
+
+@mixin flexer($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+body {
+  color: white;
+  background: black;
+}
+//FOR LOADER
+.loader {
+  width: 90vw;
+  margin: auto;
+  height: 50vh;
+  @include flexer(row);
+  video {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+
+.grid {
+  @include flexer(row);
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 10px;
+  width: 100vw;
+  margin: auto;
+  @include Bmobile {
+    @include flexer(column);
+    align-items: center;
+  }
+  .list {
+    width: 18vw;
+    position: sticky;
+    top: 0;
+    background: black;
+    color: white;
+    overflow: scroll;
+    scrollbar-width: none;
+    @include AMmobile {
+      width: 23vw;
+    }
+    @include Bmobile {
+      width: 100vw;
+    }
+  }
+  .map {
+    flex: 1;
+    // border: 1px solid rgb(149, 255, 0);
+    margin-top: 15px;
+    @include Bmobile {
+      width: 100%;
+    }
+  }
+}
+
+// For header navigation bar
+
+.navbar {
+  @include flexer(row);
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.343);
+  margin-bottom: 10px;
+
+  @include Bmobile {
+    @include flexer(column);
+    gap: 30px;
+  }
+  .content {
+    h1 {
+      font-weight: 600;
+      font-size: 2rem;
+    }
+  }
+  .search {
+    @include flexer(row);
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid black;
+    padding: 6px;
+    border-radius: 20px;
+    background: white;
+    width: 300px;
+    @include Bmobile {
+      width: 100%;
+    }
+    input {
+      border: none;
+      outline: none;
+      padding: 2px 20px;
+      outline: none;
+      @include Bmobile {
+        width: 90%;
+      }
+    }
+    h3 {
+      font-size: 1.3rem;
+      color: blue;
+      transform: translateY(2.7px);
+    }
+  }
+}
+
+// List.jsx
+.video-menu {
+  @include flexer(column);
+  align-items: flex-start;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  @include Bmobile {
+    @include flexer(row);
+    width: 100vw;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .setting {
+    background: rgba(235, 142, 20, 0.856);
+    padding-left: 30px;
+  }
+  .type {
+    @include flexer(row);
+    margin-left: 5px;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 15px;
+    align-items: center;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 120px;
+    border-radius: 20px;
+    @include Bmobile {
+      gap: 5px;
+      align-items: center;
+      width: 110px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: red;
+      margin-top: 6px;
+    }
+    h4 {
+      font-size: 0.82rem;
+      @include Bmobile {
+        width: 100px;
+      }
+    }
+  }
+}
+
+//video-card.jsx and AllVideos.jsx
+
+.main-videos {
+  @include flexer(row);
+  margin-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.video-card {
+  @include flexer(column);
+  max-width: 350px;
+  gap: 10px;
+  @include AMmobile {
+    max-width: 86%;
+  }
+  @include AMmobile {
+    max-width: 100%;
+  }
+  .video-image {
+    img {
+      border-radius: 10px;
+      max-width: 100%;
+      height: 200px;
+      transition: all 0.1s;
+      cursor: pointer;
+      object-fit: cover;
+      @include AMmobile {
+        min-width: 100%;
+        object-fit: fill;
+        height: 280px;
+      }
+      @include Bmobile {
+        min-width: 100%;
+        object-fit: fill;
+        height: 200px;
+      }
+      @include Smobile {
+        min-width: 90%;
+        object-fit: fill;
+        height: 200px;
+      }
+    }
+    img:hover {
+      border-radius: 0px;
+    }
+  }
+  .video-content {
+    @include flexer(column);
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+
+    h2 {
+      // color: rgb(15, 15, 15);
+      font-weight: 700;
+      font-size: 1.5rem;
+      height: 30px;
+      overflow: hidden;
+      cursor: pointer;
+      @include Bmobile {
+        font-size: 1.3rem;
+      }
+      @include Smobile {
+        font-size: 1rem;
+      }
+    }
+    h3 {
+      font-size: 0.9rem;
+      width: 100%;
+      color: rgb(167, 166, 166);
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: capitalize;
+      color: #ddd;
+      color: red;
+      span {
+        margin-left: 4px;
+        font-size: 0.5rem;
+        padding: 3px;
+        border-radius: 50%;
+        background: rgb(99, 98, 98);
+        color: rgb(255, 255, 255);
+      }
+    }
+    .content {
+      @include flexer(row);
+      font-weight: 600;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #ddd;
+    }
+  }
+}
+
+// SpecificDetail.jsx
+
+.specific-card {
+  width: 95vw;
+  margin: auto;
+  .image {
+    width: 95vw;
+    margin: auto;
+    height: 300px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 40px;
+    }
+  }
+  .content {
+    @include flexer(row);
+    justify-content: flex-start;
+    gap: 30px;
+    margin-bottom: 30px;
+    .specific-image {
+      img {
+        width: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        @include Fmobile {
+          width: 250px;
+        }
+        @include Bmobile {
+          display: none;
+        }
+      }
+    }
+    .specific-content {
+      @include flexer(column);
+      margin-bottom: 15px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-right: 30px;
+      gap: 30px;
+
+      @include Fmobile {
+        margin-top: 15px;
+        margin-bottom: 0px;
+        gap: 15px;
+      }
+      h2 {
+        font-size: 2.5rem;
+        @include Fmobile {
+          font-size: 1.7rem;
+        }
+      }
+      h3 {
+        font-size: 1.5rem;
+        color: rgb(89, 89, 249);
+        @include Fmobile {
+          font-size: 1rem;
+        }
+      }
+      p {
+        font-size: 1rem;
+        font-weight: 200;
+        @include Fmobile {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+//SpecificVedios
+.new-specific-videos {
+  width: 95vw;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+// vdeipplayer.jsx
+
+.video-player {
+  @include flexer(row);
+  gap: 10px;
+  width: 98vw;
+  margin: auto;
+  align-items: flex-start;
+  gap: 10px;
+  @include Amobile {
+    @include flexer(column);
+  }
+  .react-player {
+    @include flexer(row);
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    min-height: 70vh;
+    width: 60vw;
+    object-fit: fill;
+    @include Amobile {
+      width: 100vw;
+      min-height: 40vh;
+    }
+  }
+  .video-playing-content {
+    width: 60vw;
+    font-size: 1rem;
+    margin-top: 10px;
+
+    @include Amobile {
+      width: 100vw;
+      font-size: 0.7rem;
+    }
+    @include Bmobile {
+      margin-left: 20px;
+    }
+  }
+  .engage {
+    @include flexer(row);
+    justify-content: flex-start;
+    margin-top: 10px;
+
+    button {
+      @include flexer(row);
+      align-items: center;
+      width: 130px;
+      margin-left: 20px;
+      padding: 4px;
+      font-size: 1rem;
+      font-size: 900;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      @include Bmobile {
+        width: 100px;
+        font-size: 0.8rem;
+        padding: 2px;
+      }
+      span {
+        font-size: 1.5rem;
+        margin-top: 5px;
+        color: red;
+        margin-right: 10px;
+        font-size: 700;
+        @include Bmobile {
+          font-size: 1rem;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.similar-videos {
+  max-height: 90vh;
+  overflow: scroll;
+  scrollbar-width: none;
+  @include Amobile {
+    width: 100vw;
+    overflow: none;
+    @include flexer(row);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.similar {
+  min-width: 450px;
+  margin-bottom: 20px;
+  @include Bmobile {
+    min-width: 300px;
+  }
+  @include Smobile {
+    min-width: 280px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.for-image {
+  min-width: 450px;
+  height: 250px;
+}
+
+
+
+
+
+
+// footer.jsx
+
+.footer {
+  @include flexer(column);
+  align-items: center;
+  padding-top: 30px;
+  margin-top: 30px;
+  background: rgb(254, 158, 158);
+  background: #000000;
+  padding-bottom: 50px;
+  gap: 20px;
+
+  .image {
+    img {
+      width: 80px;
+      height: 80px;
+      filter: brightness(120%);
+    }
+  }
+  .content {
+    h3 {
+      font-size: 1.5rem;
+      color: white;
+      @include Bmobile {
+        font-size: 1.4rem;
+        text-align: center;
+      }
+    }
+  }
+  .logo {
+    @include flexer(row);
+    gap: 20px;
+    .portfolio{
+      margin-bottom: 10px;
+      transition: all 0.3s;
+
+     
+    }
+    .portfolio:hover{
+      text-decoration: underline;
+      color: red;
+    }
+    a {
+      text-decoration: none;
+      font-size: 2rem;
+      color: white;
+      @include Bmobile {
+        font-size: 1.2rem;
+      }
+      .linkdin {
+        color: rgb(0, 191, 255);
+      }
+      .github {
+        color: rgb(255, 255, 255);
+      }
+      .resume {
+        color: rgb(255, 0, 0);
+      }
+    }
+  }
+}
